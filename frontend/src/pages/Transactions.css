@@ -1,0 +1,48 @@
+.transactions-page {
+  padding: 30px;
+}
+
+.transactions-header {
+  margin-bottom: 25px;
+}
+
+.transactions-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.transactions-header p {
+  margin-top: 8px;
+  color: #777;
+}
+
+.transaction-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.transaction-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-card th {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.transaction-card td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.category {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #f1f1f1;
+  font-size: 13px;
+}
