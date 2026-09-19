@@ -11,7 +11,27 @@ router = APIRouter(
 
 
 @router.get("/")
-def get_transactions(db: Session = Depends(get_db)):
-    transactions = db.query(Transaction).all()
+def get_transactions(
+    db: Session = Depends(get_db)
+):
+    transactions = (
+        db.query(Transaction)
+        .order_by(Transaction.date.desc())
+        .all()
+    )
 
-    return transactions
+    return {
+        "count": len(transactions),
+        "transactions": [
+            {
+                "id": transaction.id,
+                "date": str(transaction.date),
+                "description": transaction.description,
+                "amount": float(transaction.amount or 0),
+                "transaction_type": transaction.transaction_type,
+                "category": transaction.category,
+                "source": transaction.source,
+            }
+            for transaction in transactions
+        ],
+    }

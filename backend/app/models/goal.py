@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, Date
+from sqlalchemy import Column, Integer, String, Float
+
 from app.database import Base
 
 
@@ -7,7 +8,7 @@ class Goal(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
+    goal_type = Column(String, nullable=False)
     target_amount = Column(Float, nullable=False)
-    current_amount = Column(Float, default=0)
-    target_date = Column(Date, nullable=True)
-    
+    current_amount = Column(Float, nullable=False, default=0)
+    deadline = Column(String, nullable=True)
