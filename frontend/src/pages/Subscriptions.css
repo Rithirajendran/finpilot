@@ -1,0 +1,264 @@
+.subscriptions-page {
+  min-height: 100vh;
+  padding: 32px;
+
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(124, 58, 237, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(6, 182, 212, 0.08),
+      transparent 30%
+    );
+}
+
+
+/* Header */
+
+.subscriptions-header {
+  margin-bottom: 32px;
+}
+
+.subscriptions-header h1 {
+  margin: 0;
+
+  font-size: 34px;
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+  color: #f8fafc;
+}
+
+.subscriptions-header p {
+  margin-top: 8px;
+
+  color: #94a3b8;
+
+  font-size: 15px;
+}
+
+
+/* Main Card */
+
+.subscription-card {
+  position: relative;
+
+  background: linear-gradient(
+    145deg,
+    rgba(30, 32, 42, 0.95),
+    rgba(20, 22, 29, 0.95)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 18px;
+
+  padding: 8px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+  overflow-x: auto;
+}
+
+
+/* Table */
+
+.subscription-card table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 650px;
+}
+
+
+/* Table Header */
+
+.subscription-card th {
+  text-align: left;
+
+  padding: 18px 16px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #94a3b8;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+}
+
+
+/* Table Body */
+
+.subscription-card td {
+  padding: 18px 16px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: #e2e8f0;
+
+  font-size: 14px;
+}
+
+
+/* Row Hover */
+
+.subscription-card tbody tr {
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.subscription-card tbody tr:hover {
+  background: rgba(124, 58, 237, 0.07);
+}
+
+
+/* Remove border from last row */
+
+.subscription-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Subscription Category */
+
+.subscription-category {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(139, 92, 246, 0.12);
+
+  border: 1px solid rgba(139, 92, 246, 0.2);
+
+  color: #c4b5fd;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+
+/* Frequency */
+
+.frequency {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(34, 197, 94, 0.1);
+
+  border: 1px solid rgba(34, 197, 94, 0.18);
+
+  color: #4ade80;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+
+/* Amount */
+
+.subscription-card td:last-child {
+  color: #f8fafc;
+
+  font-weight: 600;
+}
+
+
+/* Error */
+
+.error-message {
+  margin-top: 20px;
+
+  padding: 14px 18px;
+
+  border-radius: 12px;
+
+  background: rgba(239, 68, 68, 0.08);
+
+  border: 1px solid rgba(239, 68, 68, 0.2);
+
+  color: #f87171;
+
+  font-size: 14px;
+}
+
+
+/* Loading / Empty state */
+
+.subscription-card > p {
+  padding: 30px;
+
+  text-align: center;
+
+  color: #94a3b8;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .subscriptions-page {
+    padding: 24px;
+  }
+
+  .subscriptions-header h1 {
+    font-size: 30px;
+  }
+
+  .subscription-card {
+    border-radius: 14px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .subscriptions-page {
+    padding: 20px;
+  }
+
+  .subscriptions-header {
+    margin-bottom: 24px;
+  }
+
+  .subscriptions-header h1 {
+    font-size: 27px;
+  }
+
+  .subscriptions-header p {
+    font-size: 14px;
+  }
+
+  .subscription-card {
+    padding: 4px;
+
+    border-radius: 14px;
+  }
+
+  .subscription-card th,
+  .subscription-card td {
+    padding: 14px 12px;
+  }
+}
