@@ -1,0 +1,2 @@
+# finpilot
+financial management
