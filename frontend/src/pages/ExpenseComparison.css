@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap');
+
+:root {
+  --bg-deep: #060812;
+  --panel-bg: rgba(18, 22, 36, 0.75);
+  --glass-card: rgba(24, 30, 48, 0.8);
+  --glass-border: rgba(99, 102, 241, 0.25);
+  --glass-border-hover: rgba(129, 140, 248, 0.65);
+  
+  --indigo-glow: rgba(99, 102, 241, 0.45);
+  --indigo-accent: #6366f1;
+  --indigo-bright: #818cf8;
+  
+  --text-main: #f5f7fb;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  
+  --increase-color: #ff3b5c;
+  --increase-glow: rgba(255, 59, 92, 0.4);
+  
+  --decrease-color: #4ade80;
+  --decrease-glow: rgba(74, 222, 128, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-deep);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-main);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Page Canvas with Volumetric Ambient Glow */
+.comparison-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px;
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(129, 140, 248, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #0c101d 0%, #04060d 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* Ambient Cyber Grid Sub-Pattern */
+.comparison-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header Section */
+.comparison-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  z-index: 1;
+}
+
+.comparison-header h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 40%, var(--indigo-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.35));
+}
+
+.comparison-header p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Neon Refresh Button */
+.refresh-comparison {
+  padding: 12px 24px;
+  border: 1px solid var(--indigo-bright);
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--indigo-accent) 0%, #4f46e5 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
+}
+
+.refresh-comparison:hover {
+  background: linear-gradient(135deg, #818cf8 0%, var(--indigo-accent) 100%);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+  transform: translateY(-2px);
+}
+
+.refresh-comparison:active {
+  transform: translateY(1px);
+}
+
+/* Main Comparison Grid Stage */
+.comparison-overview {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  perspective: 1200px;
+}
+
+/* Glassmorphic Month & Change Cards */
+.month-card,
+.change-card {
+  position: relative;
+  padding: 26px;
+  background: var(--glass-card);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  box-shadow: 
+    0 18px 40px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(99, 102, 241, 0.04);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.month-card:hover,
+.change-card:hover {
+  transform: translateY(-8px) rotateX(3deg) scale(1.015);
+  border-color: var(--glass-border-hover);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.85),
+    0 0 35px var(--indigo-glow),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.month-card span {
+  color: var(--indigo-bright);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.month-card strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.month-card small {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.month-card.current {
+  border-color: var(--indigo-accent);
+  box-shadow: 
+    0 18px 40px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(99, 102, 241, 0.3);
+}
+
+/* Animated Transition Arrow */
+.comparison-arrow {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--indigo-bright);
+  text-shadow: 0 0 20px var(--indigo-glow);
+  animation: pulseArrow 2s infinite ease-in-out;
+}
+
+/* Change Card Dynamic Indicator */
+.change-card span {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.change-card strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.change-card small {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.change-card.increase {
+  border-left: 5px solid var(--increase-color);
+}
+
+.change-card.increase strong,
+.change-card.increase small {
+  color: var(--increase-color);
+  text-shadow: 0 0 12px var(--increase-glow);
+}
+
+.change-card.decrease {
+  border-left: 5px solid var(--decrease-color);
+}
+
+.change-card.decrease strong,
+.change-card.decrease small {
+  color: var(--decrease-color);
+  text-shadow: 0 0 12px var(--decrease-glow);
+}
+
+/* Main Inner Cards */
+.comparison-card {
+  position: relative;
+  margin-bottom: 32px;
+  padding: 28px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+.card-heading {
+  margin-bottom: 24px;
+}
+
+.card-heading h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.card-heading p {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Monthly Spending Bars */
+.monthly-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.monthly-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 140px;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(10, 14, 24, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.monthly-row:hover {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: scale(1.01);
+}
+
+.monthly-label {
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.monthly-bar-area {
+  width: 100%;
+}
+
+.monthly-bar {
+  height: 12px;
+  border-radius: 20px;
+  background: rgba(10, 14, 24, 0.8);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.monthly-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #4f46e5 0%, var(--indigo-bright) 100%);
+  box-shadow: 0 0 16px var(--indigo-glow);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monthly-value {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+/* Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.category-change-card {
+  padding: 22px;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-change-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.category-change-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-change-top h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.category-change-top span {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.category-amounts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 14px;
+  background: rgba(10, 14, 24, 0.6);
+  border-radius: 12px;
+}
+
+.category-amounts div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category-amounts span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.category-amounts strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.category-change-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.category-change-value strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.category-change-value span {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Highlight Text Utilities */
+.increase-text {
+  color: var(--increase-color);
+  text-shadow: 0 0 10px var(--increase-glow);
+}
+
+.decrease-text {
+  color: var(--decrease-color);
+  text-shadow: 0 0 10px var(--decrease-glow);
+}
+
+.neutral-text {
+  color: var(--text-muted);
+}
+
+/* Highlights Grid */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-card {
+  padding: 26px;
+  background: var(--glass-card);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.highlight-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.highlight-card span {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.highlight-card h2 {
+  margin: 10px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.highlight-card strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+/* Empty, Loading & Error States */
+.comparison-state,
+.comparison-error {
+  position: relative;
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 24px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.comparison-error h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.comparison-error p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.comparison-error button {
+  margin-top: 20px;
+  padding: 12px 26px;
+  border: 1px solid var(--increase-color);
+  border-radius: 12px;
+  background: rgba(255, 59, 92, 0.15);
+  color: #ff859b;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comparison-error button:hover {
+  background: rgba(255, 59, 92, 0.3);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 59, 92, 0.4);
+}
+
+/* Keyframe Animations */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulseArrow {
+  0%, 100% { transform: translateX(0); opacity: 0.8; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+
+/* Responsive Scaling */
+@media (max-width: 900px) {
+  .comparison-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .comparison-arrow {
+    display: none;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .comparison-page {
+    padding: 20px 14px;
+  }
+
+  .comparison-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .comparison-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .monthly-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .monthly-value {
+    text-align: left;
+  }
+
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
