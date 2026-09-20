@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap');
+
+:root {
+  --bg-deep: #0c0214;
+  --panel-bg: rgba(26, 10, 42, 0.75);
+  --card-bg: rgba(38, 14, 60, 0.85);
+  --border-neon: rgba(255, 0, 128, 0.35);
+  --border-hover: rgba(204, 255, 0, 0.8);
+  --pink-neon: #ff007f;
+  --purple-glow: #9d4edd;
+  --lime-neon: #ccff00;
+  --lime-glow: rgba(204, 255, 0, 0.4);
+  --text-primary: #ffffff;
+  --text-secondary: #e0b0ff;
+  --text-muted: #a482bc;
+  --danger-neon: #ff2a6d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-deep);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Page Container with Vice City Sunset Background Glow */
+.obligations-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(255, 0, 128, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 50% 30%, rgba(204, 255, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, #12031f 0%, #06010a 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* Background Palm City Noise Line Texture */
+.obligations-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 0, 128, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 78, 221, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header Section */
+.obligations-header {
+  position: relative;
+  margin-bottom: 36px;
+  z-index: 1;
+}
+
+.obligations-header h1 {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 40%, var(--pink-neon) 80%, var(--lime-neon) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(255, 0, 128, 0.4));
+}
+
+.obligations-header p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* Summary Card Banner with Lime Accents */
+.upcoming-total-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 36px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(45, 15, 70, 0.9) 0%, rgba(20, 5, 35, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-neon);
+  border-left: 6px solid var(--lime-neon);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(255, 0, 128, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  z-index: 1;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.upcoming-total-card:hover {
+  border-color: var(--border-hover);
+  border-left-color: var(--pink-neon);
+  box-shadow: 
+    0 25px 55px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(204, 255, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.upcoming-total-card span {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--lime-neon);
+  text-shadow: 0 0 10px rgba(204, 255, 0, 0.4);
+}
+
+.upcoming-total-card strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Glass Main Container */
+.obligations-card {
+  position: relative;
+  background: var(--panel-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-neon);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+/* Item List Container */
+.obligation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Vice City Holographic Row Card */
+.obligation-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 0, 128, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cardAppear 0.4s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.obligation-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--pink-neon);
+  box-shadow: 0 0 12px var(--pink-neon);
+  transition: background 0.3s ease;
+}
+
+.obligation-item:hover {
+  background: rgba(52, 18, 80, 0.9);
+  border-color: rgba(204, 255, 0, 0.6);
+  transform: translateY(-3px) scale(1.005);
+  box-shadow: 
+    0 18px 35px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 0, 128, 0.25);
+}
+
+.obligation-item:hover::after {
+  background: var(--lime-neon);
+  box-shadow: 0 0 12px var(--lime-neon);
+}
+
+/* Obligation Details */
+.obligation-info h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.obligation-info span {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Date Details */
+.obligation-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.obligation-date span {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.obligation-date strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.obligation-date small {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--lime-neon);
+  text-shadow: 0 0 8px rgba(204, 255, 0, 0.3);
+}
+
+/* Amount & Status Badges */
+.obligation-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.obligation-amount strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+}
+
+/* Neon Pill Badges */
+.obligation-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.obligation-status.due-soon,
+.obligation-status.upcoming,
+.obligation-status.scheduled {
+  background: rgba(255, 0, 128, 0.18);
+  color: var(--pink-neon);
+  border: 1px solid var(--pink-neon);
+  box-shadow: 0 0 14px rgba(255, 0, 128, 0.3);
+}
+
+.obligation-status.overdue,
+.obligation-status.urgent {
+  background: rgba(255, 42, 109, 0.2);
+  color: #ff6b8b;
+  border: 1px solid var(--danger-neon);
+  box-shadow: 0 0 14px rgba(255, 42, 109, 0.35);
+}
+
+.obligation-status.paid,
+.obligation-status.completed {
+  background: rgba(204, 255, 0, 0.15);
+  color: var(--lime-neon);
+  border: 1px solid var(--lime-neon);
+  box-shadow: 0 0 14px var(--lime-glow);
+}
+
+/* Message States */
+.obligations-card > p {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.no-obligations {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.no-obligations h3 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.obligation-error {
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: rgba(255, 42, 109, 0.15);
+  border: 1px solid var(--danger-neon);
+  color: #ff85a1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(15px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Responsive Scaling */
+@media (max-width: 850px) {
+  .obligation-item {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .obligation-amount {
+    grid-column: span 2;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 600px) {
+  .obligations-page {
+    padding: 20px 14px;
+  }
+
+  .obligations-header h1 {
+    font-size: 32px;
+  }
+
+  .upcoming-total-card strong {
+    font-size: 30px;
+  }
+
+  .obligation-item {
+    grid-template-columns: 1fr;
+  }
+
+  .obligation-amount {
+    grid-column: span 1;
+  }
+}

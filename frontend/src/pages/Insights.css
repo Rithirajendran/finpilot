@@ -1,0 +1,147 @@
+.insights-page {
+  padding: 30px;
+  color: #f5f7fb;
+}
+
+.insights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.insights-header h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.page-subtitle {
+  margin-top: 8px;
+  color: #9ca3af;
+}
+
+.refresh-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #6366f1;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.refresh-button:hover {
+  opacity: 0.9;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.insight-card {
+  padding: 22px;
+  background: #151922;
+  border: 1px solid #292f3b;
+  border-radius: 16px;
+}
+
+.insight-card.high {
+  border-left: 4px solid #ef4444;
+}
+
+.insight-card.medium {
+  border-left: 4px solid #f59e0b;
+}
+
+.insight-card.low {
+  border-left: 4px solid #4ade80;
+}
+
+.insight-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.insight-type {
+  color: #a5b4fc;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.priority-badge {
+  padding: 5px 9px;
+  border-radius: 7px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.priority-badge.high {
+  background: rgba(239, 68, 68, 0.14);
+  color: #f87171;
+}
+
+.priority-badge.medium {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fbbf24;
+}
+
+.priority-badge.low {
+  background: rgba(74, 222, 128, 0.14);
+  color: #4ade80;
+}
+
+.insight-card h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.insight-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #aeb6c5;
+}
+
+.insights-state,
+.empty-insights {
+  padding: 70px 20px;
+  text-align: center;
+  background: #151922;
+  border: 1px solid #292f3b;
+  border-radius: 16px;
+  color: #9ca3af;
+}
+
+.empty-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: #818cf8;
+}
+
+.empty-insights h2 {
+  color: #f5f7fb;
+}
+
+.insights-error {
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+}
+
+@media (max-width: 850px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

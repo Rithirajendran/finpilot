@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --bg-deep: #050202;
+  --panel-bg: rgba(22, 8, 8, 0.75);
+  --chat-bg: rgba(14, 5, 5, 0.85);
+  --glass-border: rgba(255, 69, 0, 0.25);
+  --glass-border-hover: rgba(255, 100, 0, 0.6);
+  --orange-neon: #ff4500;
+  --orange-bright: #ff6a00;
+  --orange-glow: rgba(255, 69, 0, 0.4);
+  --text-primary: #ffffff;
+  --text-secondary: #ffc4b3;
+  --text-muted: #a37568;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-deep);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Page Background with Fiery Eclipse Glow & Solar Flares */
+.ai-assistant-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(255, 69, 0, 0.28) 0%, transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(255, 106, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #120404 0%, #030101 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* Ambient Cosmic Dust / Ember Particle Overlay */
+.ai-assistant-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(255, 69, 0, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(255, 165, 0, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Page Header */
+.ai-header {
+  position: relative;
+  margin-bottom: 32px;
+  z-index: 1;
+}
+
+.ai-header h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 40%, var(--orange-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(255, 69, 0, 0.45));
+}
+
+.ai-header p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* Massive Holographic Chat Card Container */
+.ai-chat-card {
+  position: relative;
+  max-width: 1000px;
+  min-height: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.85),
+    0 0 40px rgba(255, 69, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
+}
+
+.ai-chat-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.95),
+    0 0 50px rgba(255, 69, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+/* Scrollable Chat Area */
+.ai-chat-area {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Custom Fire-styled Scrollbar */
+.ai-chat-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ai-chat-area::-webkit-scrollbar-track {
+  background: rgba(18, 5, 5, 0.6);
+}
+
+.ai-chat-area::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--orange-neon), var(--orange-bright));
+  border-radius: 10px;
+}
+
+/* Empty / Welcome View */
+.ai-welcome {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Glowing Eclipse Ring Icon */
+.ai-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #ff4500 0%, #1a0505 80%);
+  color: #ffffff;
+  font-size: 30px;
+  margin-bottom: 24px;
+  border: 2px solid var(--orange-neon);
+  box-shadow: 
+    0 0 30px var(--orange-neon),
+    inset 0 0 15px #ff6a00;
+  animation: eclipsePulse 3s infinite alternate ease-in-out;
+}
+
+.ai-welcome h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.ai-welcome p {
+  max-width: 520px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Suggestion Buttons Grid */
+.suggestion-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 32px;
+  width: 100%;
+  max-width: 680px;
+}
+
+.suggestion-list button {
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 69, 0, 0.25);
+  background: rgba(28, 10, 10, 0.7);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+.suggestion-list button:hover {
+  background: rgba(50, 16, 12, 0.9);
+  border-color: var(--orange-neon);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 69, 0, 0.2);
+}
+
+/* Chat Messages */
+.chat-message {
+  margin-bottom: 22px;
+  max-width: 78%;
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+.user-message {
+  margin-left: auto;
+}
+
+.assistant-message {
+  margin-right: auto;
+}
+
+.message-label {
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.user-message .message-label {
+  text-align: right;
+  color: var(--orange-bright);
+}
+
+.message-bubble {
+  padding: 16px 20px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.user-message .message-bubble {
+  background: linear-gradient(135deg, #ff4500 0%, #cc3300 100%);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 8px 20px rgba(255, 69, 0, 0.35);
+}
+
+.assistant-message .message-bubble {
+  background: var(--chat-bg);
+  border: 1px solid rgba(255, 69, 0, 0.2);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.loading-bubble {
+  color: var(--orange-bright);
+  font-weight: 600;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Bottom Input Area */
+.ai-input-area {
+  display: flex;
+  gap: 14px;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 69, 0, 0.2);
+  background: rgba(10, 3, 3, 0.95);
+  backdrop-filter: blur(15px);
+}
+
+.ai-input-area input {
+  flex: 1;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 69, 0, 0.25);
+  background: rgba(22, 7, 7, 0.8);
+  color: #ffffff;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.ai-input-area input:focus {
+  border-color: var(--orange-neon);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.35);
+  background: rgba(32, 10, 10, 0.95);
+}
+
+.ai-input-area input::placeholder {
+  color: var(--text-muted);
+}
+
+.ai-input-area button {
+  min-width: 100px;
+  padding: 14px 28px;
+  border: 1px solid var(--orange-neon);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff4500 0%, #d43800 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+}
+
+.ai-input-area button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff5714 0%, #eb3e00 100%);
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.ai-input-area button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Animations */
+@keyframes eclipsePulse {
+  0% { box-shadow: 0 0 20px var(--orange-neon), inset 0 0 10px #ff6a00; }
+  100% { box-shadow: 0 0 45px var(--orange-neon), inset 0 0 25px #ff6a00; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Layout */
+@media (max-width: 700px) {
+  .ai-assistant-page {
+    padding: 20px 14px;
+  }
+
+  .ai-header h1 {
+    font-size: 30px;
+  }
+
+  .suggestion-list {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-message {
+    max-width: 90%;
+  }
+
+  .ai-input-area {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .ai-input-area button {
+    width: 100%;
+  }
+}

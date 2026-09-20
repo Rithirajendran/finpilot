@@ -1,0 +1,611 @@
+/* =========================================================
+   FINPILOT APP LAYOUT
+   Dark Premium Fintech / 3D Glass UI
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  background: #0b0d12;
+  color: #f8fafc;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   APP BACKGROUND
+   ========================================================= */
+
+.app-layout {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(124, 58, 237, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(6, 182, 212, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(168, 85, 247, 0.06),
+      transparent 35%
+    ),
+    #0b0d12;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 270px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 26px 16px 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(24, 26, 35, 0.97),
+      rgba(13, 15, 21, 0.99)
+    );
+
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+
+  box-shadow:
+    12px 0 40px rgba(0, 0, 0, 0.25),
+    inset -1px 0 rgba(255, 255, 255, 0.02);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  z-index: 1000;
+
+  overflow-y: auto;
+
+  transform: translateZ(0);
+}
+
+
+/* =========================================================
+   SIDEBAR GLOW
+   ========================================================= */
+
+.sidebar::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -70px;
+  left: -80px;
+
+  background: rgba(124, 58, 237, 0.18);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+.sidebar::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  bottom: 30px;
+  right: -80px;
+
+  background: rgba(6, 182, 212, 0.08);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 8px 14px 28px;
+
+  color: #ffffff;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  letter-spacing: -0.8px;
+
+  z-index: 2;
+}
+
+
+/* Logo icon */
+
+.logo::before {
+  content: "✦";
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 11px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #6d28d9
+    );
+
+  box-shadow:
+    0 8px 25px rgba(124, 58, 237, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.2);
+
+  transform: rotate(-4deg);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.logo:hover::before {
+  transform:
+    rotate(6deg)
+    scale(1.08)
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 35px rgba(124, 58, 237, 0.6);
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.sidebar nav {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  width: 100%;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   NAV LINK
+   ========================================================= */
+
+.nav-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 48px;
+
+  padding: 12px 15px;
+
+  border-radius: 13px;
+
+  color: #8f96a8;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 550;
+
+  letter-spacing: 0.1px;
+
+  overflow: hidden;
+
+  transform-style: preserve-3d;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   NAV HOVER
+   ========================================================= */
+
+.nav-link:hover {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.15),
+      rgba(6, 182, 212, 0.05)
+    );
+
+  transform:
+    translateX(5px)
+    translateZ(10px);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================================
+   NAV LINK SHINE
+   ========================================================= */
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 60%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.06),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+}
+
+.nav-link:hover::after {
+  left: 130%;
+}
+
+
+/* =========================================================
+   ACTIVE LINK
+   ========================================================= */
+
+.nav-link.active {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.95),
+      rgba(91, 33, 182, 0.9)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(124, 58, 237, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 -1px rgba(0, 0, 0, 0.15);
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   ACTIVE LEFT GLOW
+   ========================================================= */
+
+.nav-link.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: -16px;
+  top: 8px;
+
+  width: 4px;
+  height: 32px;
+
+  border-radius: 0 5px 5px 0;
+
+  background: #c084fc;
+
+  box-shadow:
+    0 0 8px #a855f7,
+    0 0 20px rgba(168, 85, 247, 0.8);
+
+  animation: activeGlow 2s ease-in-out infinite;
+}
+
+@keyframes activeGlow {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+  position: relative;
+
+  width: calc(100% - 270px);
+
+  min-height: 100vh;
+
+  margin-left: 270px;
+
+  padding: 38px;
+
+  overflow-x: hidden;
+
+  animation: pageEnter 0.5s ease;
+}
+
+
+/* =========================================================
+   MAIN CONTENT GLOW
+   ========================================================= */
+
+.main-content::before {
+  content: "";
+
+  position: fixed;
+
+  width: 500px;
+  height: 500px;
+
+  top: -250px;
+  right: -180px;
+
+  background: rgba(124, 58, 237, 0.08);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+.main-content::after {
+  content: "";
+
+  position: fixed;
+
+  width: 400px;
+  height: 400px;
+
+  bottom: -220px;
+  left: 40%;
+
+  background: rgba(6, 182, 212, 0.04);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   PAGE ENTER ANIMATION
+   ========================================================= */
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLLBAR
+   ========================================================= */
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #292d38;
+  border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #454b59;
+}
+
+
+/* =========================================================
+   MAIN CONTENT SCROLLBAR
+   ========================================================= */
+
+.main-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #292d38;
+  border-radius: 20px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .sidebar {
+    width: 230px;
+  }
+
+  .main-content {
+    width: calc(100% - 230px);
+
+    margin-left: 230px;
+
+    padding: 28px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .app-layout {
+    display: block;
+  }
+
+  .sidebar {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    padding: 16px;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+      0 10px 35px rgba(0, 0, 0, 0.25);
+  }
+
+  .logo {
+    padding: 5px 5px 18px;
+  }
+
+  .sidebar nav {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 7px;
+  }
+
+  .nav-link {
+    min-height: 44px;
+
+    font-size: 13px;
+  }
+
+  .nav-link.active::before {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding: 22px 16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+  .sidebar nav {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 18px 12px;
+  }
+
+}
