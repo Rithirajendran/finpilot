@@ -1,0 +1,1943 @@
+/* =========================================================
+   FINPILOT UPLOAD PAGE
+   Premium 3D Glass / Animated UI
+   ========================================================= */
+
+.upload-page {
+  position: relative;
+
+  min-height: calc(100vh - 20px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px 20px 60px;
+
+  overflow: hidden;
+
+  perspective: 1400px;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND
+   ========================================================= */
+
+.upload-background {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   GLOWING ORBS
+   ========================================================= */
+
+.background-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(70px);
+
+  opacity: 0.5;
+
+  animation:
+    orbFloat 8s ease-in-out infinite;
+}
+
+.orb-one {
+  width: 420px;
+  height: 420px;
+
+  top: -180px;
+  left: -120px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 58, 237, 0.25),
+      transparent 70%
+    );
+}
+
+.orb-two {
+  width: 500px;
+  height: 500px;
+
+  right: -220px;
+  top: 15%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(6, 182, 212, 0.15),
+      transparent 70%
+    );
+
+  animation-delay: -3s;
+}
+
+.orb-three {
+  width: 350px;
+  height: 350px;
+
+  left: 35%;
+  bottom: -200px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.15),
+      transparent 70%
+    );
+
+  animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(30px, -25px, 0) scale(1.08);
+  }
+}
+
+
+/* =========================================================
+   3D GRID FLOOR
+   ========================================================= */
+
+.grid-floor {
+  position: absolute;
+
+  width: 140%;
+  height: 50%;
+
+  left: -20%;
+  bottom: -15%;
+
+  opacity: 0.13;
+
+  background-image:
+    linear-gradient(
+      rgba(139, 92, 246, 0.25) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(139, 92, 246, 0.25) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  transform:
+    perspective(500px)
+    rotateX(62deg);
+
+  mask-image:
+    linear-gradient(
+      to top,
+      black,
+      transparent
+    );
+
+  animation:
+    gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      0 55px,
+      55px 0;
+  }
+}
+
+
+/* =========================================================
+   FLOATING PARTICLES
+   ========================================================= */
+
+.floating-particle {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #a855f7;
+
+  box-shadow:
+    0 0 12px #a855f7,
+    0 0 25px rgba(168, 85, 247, 0.7);
+
+  animation:
+    particleFloat 7s ease-in-out infinite;
+}
+
+.particle-one {
+  left: 15%;
+  top: 35%;
+}
+
+.particle-two {
+  left: 75%;
+  top: 30%;
+
+  animation-delay: -2s;
+}
+
+.particle-three {
+  left: 82%;
+  top: 70%;
+
+  animation-delay: -4s;
+}
+
+.particle-four {
+  left: 25%;
+  top: 75%;
+
+  animation-delay: -1s;
+}
+
+.particle-five {
+  left: 55%;
+  top: 20%;
+
+  animation-delay: -5s;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+
+    opacity: 0.3;
+  }
+
+  50% {
+    transform:
+      translate3d(20px, -35px, 30px)
+      scale(1.8);
+
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.upload-header {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+  max-width: 850px;
+
+  text-align: center;
+
+  margin-top: 20px;
+  margin-bottom: 25px;
+
+  animation:
+    headerEnter 0.8s ease forwards;
+}
+
+@keyframes headerEnter {
+  from {
+    opacity: 0;
+    transform:
+      translateY(-25px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.upload-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  padding: 7px 13px;
+
+  border: 1px solid rgba(168, 85, 247, 0.2);
+
+  border-radius: 999px;
+
+  background:
+    rgba(124, 58, 237, 0.08);
+
+  color: #a78bfa;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #a855f7;
+
+  box-shadow:
+    0 0 8px #a855f7;
+
+  animation:
+    dotPulse 1.7s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.upload-header h1 {
+  margin: 0;
+
+  font-size: clamp(34px, 5vw, 56px);
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
+
+  color: #f8fafc;
+}
+
+.upload-header h1 span {
+  background:
+    linear-gradient(
+      100deg,
+      #c084fc,
+      #8b5cf6 45%,
+      #22d3ee
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  background-size: 200% 100%;
+
+  animation:
+    gradientText 5s ease infinite;
+}
+
+@keyframes gradientText {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+.upload-header p {
+  max-width: 650px;
+
+  margin: 14px auto 0;
+
+  color: #8f96a8;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   UPLOAD STAGE
+   ========================================================= */
+
+.upload-stage {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  max-width: 920px;
+
+  min-height: 620px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1500px;
+}
+
+
+/* =========================================================
+   ORBIT RINGS
+   ========================================================= */
+
+.orbit {
+  position: absolute;
+
+  border: 1px solid rgba(139, 92, 246, 0.13);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 650px;
+  height: 250px;
+
+  transform:
+    rotateX(68deg)
+    rotateZ(-15deg);
+
+  animation:
+    orbitSpin 18s linear infinite;
+}
+
+.orbit-two {
+  width: 520px;
+  height: 200px;
+
+  transform:
+    rotateX(68deg)
+    rotateZ(65deg);
+
+  border-color:
+    rgba(34, 211, 238, 0.1);
+
+  animation:
+    orbitSpinReverse 14s linear infinite;
+}
+
+.orbit-three {
+  width: 730px;
+  height: 300px;
+
+  transform:
+    rotateX(68deg)
+    rotateZ(25deg);
+
+  border-color:
+    rgba(168, 85, 247, 0.08);
+
+  animation:
+    orbitSpin 24s linear infinite;
+}
+
+@keyframes orbitSpin {
+  from {
+    transform:
+      rotateX(68deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      rotateX(68deg)
+      rotateZ(360deg);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  from {
+    transform:
+      rotateX(68deg)
+      rotateZ(360deg);
+  }
+
+  to {
+    transform:
+      rotateX(68deg)
+      rotateZ(0deg);
+  }
+}
+
+
+/* =========================================================
+   MAIN 3D CARD
+   ========================================================= */
+
+.upload-card-3d {
+  position: relative;
+
+  width: min(760px, 94%);
+
+  min-height: 530px;
+
+  padding: 55px 58px 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  border-radius: 34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(55, 57, 66, 0.86),
+      rgba(27, 28, 37, 0.92) 50%,
+      rgba(24, 21, 42, 0.94)
+    );
+
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.45),
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.13),
+    inset 0 -1px rgba(0, 0, 0, 0.3);
+
+  transform:
+    rotateX(1deg)
+    translateZ(0);
+
+  transform-style: preserve-3d;
+
+  overflow: hidden;
+
+  animation:
+    cardFloat 5s ease-in-out infinite,
+    cardEnter 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(50px)
+      rotateX(12deg)
+      rotateY(-5deg)
+      scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      rotateX(1deg)
+      rotateY(0)
+      scale(1);
+  }
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform:
+      rotateX(1deg)
+      rotateY(0deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      rotateX(2deg)
+      rotateY(-1deg)
+      translateY(-7px);
+  }
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.upload-card-3d:hover {
+  box-shadow:
+    0 50px 110px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(124, 58, 237, 0.08),
+    inset 0 1px rgba(255, 255, 255, 0.16);
+
+  border-color:
+    rgba(168, 85, 247, 0.22);
+}
+
+
+/* =========================================================
+   CARD GLOW
+   ========================================================= */
+
+.card-glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -220px;
+  right: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 58, 237, 0.22),
+      transparent 68%
+    );
+
+  filter: blur(30px);
+
+  pointer-events: none;
+
+  animation:
+    cardGlowMove 7s ease-in-out infinite;
+}
+
+@keyframes cardGlowMove {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(-100px, 100px, 0)
+      scale(1.2);
+  }
+}
+
+
+/* =========================================================
+   CARD HIGHLIGHT
+   ========================================================= */
+
+.card-highlight {
+  position: absolute;
+
+  top: 0;
+  left: 8%;
+
+  width: 84%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   3D FOLDER
+   ========================================================= */
+
+.folder-scene {
+  position: absolute;
+
+  top: 48px;
+  left: 58px;
+
+  width: 170px;
+  height: 135px;
+
+  transform-style: preserve-3d;
+
+  transform:
+    perspective(800px)
+    rotateX(7deg)
+    rotateY(-12deg)
+    rotateZ(-2deg);
+
+  animation:
+    folderFloat 4s ease-in-out infinite;
+}
+
+@keyframes folderFloat {
+  0%,
+  100% {
+    transform:
+      perspective(800px)
+      rotateX(7deg)
+      rotateY(-12deg)
+      rotateZ(-2deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      perspective(800px)
+      rotateX(9deg)
+      rotateY(-16deg)
+      rotateZ(-2deg)
+      translateY(-9px);
+  }
+}
+
+
+/* Folder shadow */
+
+.folder-shadow {
+  position: absolute;
+
+  left: 15px;
+  bottom: -25px;
+
+  width: 140px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  filter: blur(14px);
+
+  transform:
+    rotateX(70deg);
+
+  animation:
+    shadowPulse 4s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+  0%,
+  100% {
+    transform:
+      rotateX(70deg)
+      scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform:
+      rotateX(70deg)
+      scale(0.75);
+    opacity: 0.3;
+  }
+}
+
+
+/* Folder back */
+
+.folder-back {
+  position: absolute;
+
+  left: 5px;
+  top: 18px;
+
+  width: 160px;
+  height: 108px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7c3aed,
+      #4f20b7 55%,
+      #25105f
+    );
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.28),
+    0 18px 30px rgba(76, 29, 149, 0.35);
+
+  transform:
+    translateZ(-8px);
+}
+
+
+/* Folder tab */
+
+.folder-tab {
+  position: absolute;
+
+  left: 8px;
+  top: -21px;
+
+  width: 75px;
+  height: 28px;
+
+  border-radius: 12px 12px 0 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      #a78bfa,
+      #6d28d9
+    );
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.3);
+}
+
+
+/* Folder front */
+
+.folder-front {
+  position: absolute;
+
+  left: 0;
+  top: 34px;
+
+  width: 170px;
+  height: 105px;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6230dd,
+      #4c1d95 65%,
+      #2b1065
+    );
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.24),
+    inset 0 -12px 25px rgba(0, 0, 0, 0.15),
+    0 25px 40px rgba(76, 29, 149, 0.35);
+
+  transform:
+    translateZ(10px);
+}
+
+
+/* Folder shine */
+
+.folder-shine {
+  position: absolute;
+
+  top: 8px;
+  left: 10px;
+
+  width: 90%;
+  height: 35px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+}
+
+
+/* Upload arrow */
+
+.folder-arrow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: #ffffff;
+
+  font-size: 27px;
+
+  font-weight: 300;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.2);
+
+  animation:
+    arrowFloat 2s ease-in-out infinite;
+}
+
+@keyframes arrowFloat {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -58%);
+  }
+}
+
+
+/* Folder glow */
+
+.folder-glow {
+  position: absolute;
+
+  left: 10px;
+  bottom: -20px;
+
+  width: 150px;
+  height: 70px;
+
+  background:
+    rgba(124, 58, 237, 0.35);
+
+  filter: blur(35px);
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   UPLOAD CONTENT
+   ========================================================= */
+
+.upload-content {
+  position: relative;
+
+  z-index: 5;
+
+  margin-top: 145px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.upload-title-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.upload-title-row h2 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.file-type {
+  padding: 5px 10px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(168, 85, 247, 0.1);
+
+  border:
+    1px solid rgba(168, 85, 247, 0.2);
+
+  color: #c084fc;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.upload-description {
+  margin-top: 7px;
+
+  color: #858b9b;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   DROP ZONE
+   ========================================================= */
+
+.drop-zone {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 25px;
+
+  padding: 17px 18px;
+
+  border:
+    1px dashed rgba(255, 255, 255, 0.14);
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.drop-zone:hover {
+  border-color:
+    rgba(168, 85, 247, 0.45);
+
+  background:
+    rgba(124, 58, 237, 0.06);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.drop-zone.active {
+  border-color:
+    #a855f7;
+
+  background:
+    rgba(124, 58, 237, 0.13);
+
+  transform:
+    scale(1.015);
+
+  box-shadow:
+    0 0 35px rgba(124, 58, 237, 0.18);
+}
+
+
+/* Drop icon */
+
+.drop-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.22),
+      rgba(6, 182, 212, 0.1)
+    );
+
+  color: #c084fc;
+
+  font-size: 20px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.drop-zone:hover .drop-icon {
+  transform:
+    translateY(-3px);
+}
+
+.drop-zone strong {
+  display: block;
+
+  color: #e5e7eb;
+
+  font-size: 13px;
+}
+
+.drop-zone span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #6f7687;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SELECTED FILE
+   ========================================================= */
+
+.selected-file {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 15px;
+
+  padding: 12px 14px;
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  animation:
+    fileAppear 0.35s ease;
+}
+
+@keyframes fileAppear {
+  from {
+    opacity: 0;
+    transform:
+      translateY(8px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.file-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 20px rgba(124, 58, 237, 0.25);
+}
+
+.file-details {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.file-details strong {
+  display: block;
+
+  overflow: hidden;
+
+  color: #e5e7eb;
+
+  font-size: 12px;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.file-details span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #737b8c;
+
+  font-size: 10px;
+}
+
+.remove-file {
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color: #9ca3af;
+
+  font-size: 18px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.remove-file:hover {
+  color: #ffffff;
+
+  background:
+    rgba(239, 68, 68, 0.15);
+
+  transform:
+    scale(1.05);
+}
+
+
+/* =========================================================
+   UPLOAD BUTTON
+   ========================================================= */
+
+.upload-button {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding: 14px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #6d28d9 55%,
+      #5b21b6
+    );
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 12px 30px rgba(124, 58, 237, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.2);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.upload-button:hover:not(:disabled) {
+  transform:
+    translateY(-3px)
+    scale(1.01);
+
+  box-shadow:
+    0 18px 40px rgba(124, 58, 237, 0.38),
+    0 0 35px rgba(124, 58, 237, 0.12),
+    inset 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.upload-button:active:not(:disabled) {
+  transform:
+    translateY(0)
+    scale(0.99);
+}
+
+.upload-button:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* Button shine */
+
+.upload-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 70%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+
+  transform:
+    skewX(-20deg);
+
+  transition:
+    left 0.6s ease;
+}
+
+.upload-button:hover::before {
+  left: 130%;
+}
+
+.button-icon {
+  font-size: 17px;
+}
+
+.button-arrow {
+  position: absolute;
+
+  right: 18px;
+
+  font-size: 17px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.upload-button:hover .button-arrow {
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.progress-section {
+  margin-top: 20px;
+
+  animation:
+    progressAppear 0.3s ease;
+}
+
+@keyframes progressAppear {
+  from {
+    opacity: 0;
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+.progress-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+
+  color: #a1a7b5;
+
+  font-size: 11px;
+}
+
+.progress-header strong {
+  color: #c084fc;
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar {
+  position: relative;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7c3aed,
+      #a855f7,
+      #22d3ee
+    );
+
+  background-size: 200% 100%;
+
+  box-shadow:
+    0 0 18px rgba(168, 85, 247, 0.55);
+
+  transition:
+    width 0.25s ease;
+
+  animation:
+    progressGradient 2s linear infinite;
+}
+
+@keyframes progressGradient {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+.progress-shine {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+
+  animation:
+    progressShine 1.3s linear infinite;
+}
+
+@keyframes progressShine {
+  from {
+    transform:
+      translateX(-100%);
+  }
+
+  to {
+    transform:
+      translateX(100%);
+  }
+}
+
+.progress-status {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #666e80;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   STATUS MESSAGE
+   ========================================================= */
+
+.status-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 18px;
+
+  padding: 13px;
+
+  border-radius: 13px;
+
+  animation:
+    statusAppear 0.4s ease;
+}
+
+@keyframes statusAppear {
+  from {
+    opacity: 0;
+    transform:
+      translateY(10px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.success-message {
+  border:
+    1px solid rgba(34, 197, 94, 0.2);
+
+  background:
+    rgba(34, 197, 94, 0.08);
+}
+
+.error-message {
+  border:
+    1px solid rgba(239, 68, 68, 0.2);
+
+  background:
+    rgba(239, 68, 68, 0.08);
+}
+
+.status-icon {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 17px;
+
+  font-weight: 800;
+}
+
+.success-message .status-icon {
+  color: #4ade80;
+
+  background:
+    rgba(34, 197, 94, 0.12);
+
+  box-shadow:
+    0 0 20px rgba(34, 197, 94, 0.12);
+}
+
+.error-message .status-icon {
+  color: #f87171;
+
+  background:
+    rgba(239, 68, 68, 0.12);
+}
+
+.status-message strong {
+  display: block;
+
+  color: #e5e7eb;
+
+  font-size: 12px;
+}
+
+.status-message span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7f8797;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   UPLOAD FOOTER
+   ========================================================= */
+
+.upload-footer {
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: auto;
+
+  padding-top: 22px;
+
+  color: #626978;
+
+  font-size: 9px;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   UPLOADING STATE
+   ========================================================= */
+
+.upload-card-3d.is-uploading .folder-scene {
+  animation:
+    folderUploading 1.2s ease-in-out infinite;
+}
+
+@keyframes folderUploading {
+  0%,
+  100% {
+    transform:
+      perspective(800px)
+      rotateX(7deg)
+      rotateY(-12deg)
+      rotateZ(-2deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      perspective(800px)
+      rotateX(10deg)
+      rotateY(-18deg)
+      rotateZ(-2deg)
+      translateY(-14px)
+      scale(1.04);
+  }
+}
+
+.upload-card-3d.is-uploading .folder-glow {
+  animation:
+    uploadingGlow 1.2s ease-in-out infinite;
+}
+
+@keyframes uploadingGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+
+/* =========================================================
+   SUCCESS STATE
+   ========================================================= */
+
+.upload-card-3d.upload-success {
+  border-color:
+    rgba(34, 197, 94, 0.25);
+
+  box-shadow:
+    0 45px 100px rgba(0, 0, 0, 0.45),
+    0 0 50px rgba(34, 197, 94, 0.08),
+    inset 0 1px rgba(255, 255, 255, 0.13);
+}
+
+.upload-card-3d.upload-success .folder-front {
+  background:
+    linear-gradient(
+      145deg,
+      #16a34a,
+      #15803d,
+      #14532d
+    );
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.upload-card-3d.upload-error {
+  animation:
+    cardShake 0.4s ease;
+}
+
+@keyframes cardShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-7px);
+  }
+
+  75% {
+    transform: translateX(7px);
+  }
+}
+
+
+/* =========================================================
+   DRAGGING STATE
+   ========================================================= */
+
+.upload-card-3d.dragging {
+  border-color:
+    rgba(168, 85, 247, 0.6);
+
+  box-shadow:
+    0 50px 100px rgba(0, 0, 0, 0.5),
+    0 0 70px rgba(124, 58, 237, 0.2),
+    inset 0 1px rgba(255, 255, 255, 0.18);
+
+  transform:
+    rotateX(2deg)
+    scale(1.015);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .upload-stage {
+    min-height: 560px;
+  }
+
+  .upload-card-3d {
+    width: 94%;
+
+    padding:
+      45px
+      42px
+      22px;
+  }
+
+  .folder-scene {
+    left: 42px;
+  }
+
+  .orbit-one {
+    width: 550px;
+  }
+
+  .orbit-two {
+    width: 450px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .upload-page {
+    padding:
+      15px
+      10px
+      40px;
+  }
+
+  .upload-header {
+    margin-top: 10px;
+  }
+
+  .upload-header h1 {
+    font-size: 34px;
+
+    letter-spacing: -1.3px;
+  }
+
+  .upload-header p {
+    font-size: 13px;
+  }
+
+  .upload-stage {
+    min-height: 650px;
+  }
+
+  .upload-card-3d {
+    width: 96%;
+
+    min-height: 590px;
+
+    padding:
+      35px
+      22px
+      20px;
+
+    border-radius: 25px;
+  }
+
+  .folder-scene {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    margin:
+      0 auto
+      10px;
+
+    transform:
+      perspective(800px)
+      rotateX(7deg)
+      rotateY(-12deg)
+      rotateZ(-2deg);
+  }
+
+  .upload-content {
+    margin-top: 20px;
+  }
+
+  .upload-title-row h2 {
+    font-size: 21px;
+  }
+
+  .drop-zone {
+    padding: 14px;
+  }
+
+  .orbit-one {
+    width: 400px;
+    height: 180px;
+  }
+
+  .orbit-two {
+    width: 350px;
+    height: 150px;
+  }
+
+  .orbit-three {
+    display: none;
+  }
+
+  .upload-footer {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
