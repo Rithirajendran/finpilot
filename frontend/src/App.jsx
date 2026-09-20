@@ -3,7 +3,12 @@ import {
   Routes,
   Route,
   NavLink,
+  Navigate,
 } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
@@ -11,23 +16,27 @@ import Transactions from "./pages/Transactions";
 import Subscriptions from "./pages/Subscriptions";
 import Budgets from "./pages/Budgets";
 import Goals from "./pages/Goals";
-import Insights from "./pages/Insights";
 import AIAssistant from "./pages/AIAssistant";
 import Settings from "./pages/Settings";
 import Obligations from "./pages/Obligations";
 import FinancialInsights from "./pages/FinancialInsights";
 import ExpenseComparison from "./pages/ExpenseComparison";
+import MonthlyFinancialSummary from "./pages/MonthlyFinancialSummary";
 
 import "./App.css";
 
+
+/* =========================================================
+   SIDEBAR + MAIN APPLICATION LAYOUT
+   ========================================================= */
 
 function Layout() {
   return (
     <div className="app-layout">
 
-      {/* ============================= */}
-      {/* SIDEBAR */}
-      {/* ============================= */}
+      {/* ===================================================
+          SIDEBAR
+          =================================================== */}
 
       <aside className="sidebar">
 
@@ -40,7 +49,7 @@ function Layout() {
           {/* Dashboard */}
 
           <NavLink
-            to="/"
+            to="/dashboard"
             className={({ isActive }) =>
               isActive
                 ? "nav-link active"
@@ -121,20 +130,6 @@ function Layout() {
           </NavLink>
 
 
-          {/* Insights */}
-
-          <NavLink
-            to="/insights"
-            className={({ isActive }) =>
-              isActive
-                ? "nav-link active"
-                : "nav-link"
-            }
-          >
-            Insights
-          </NavLink>
-
-
           {/* AI Assistant */}
 
           <NavLink
@@ -191,6 +186,20 @@ function Layout() {
           </NavLink>
 
 
+          {/* Monthly Summary */}
+
+          <NavLink
+            to="/monthly-summary"
+            className={({ isActive }) =>
+              isActive
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
+            Monthly Summary
+          </NavLink>
+
+
           {/* Settings */}
 
           <NavLink
@@ -209,107 +218,179 @@ function Layout() {
       </aside>
 
 
-      {/* ============================= */}
-      {/* MAIN CONTENT */}
-      {/* ============================= */}
+      {/* ===================================================
+          MAIN CONTENT
+          =================================================== */}
 
       <main className="main-content">
 
         <Routes>
 
-          {/* Dashboard */}
+          {/* ===============================================
+              DASHBOARD
+              =============================================== */}
 
           <Route
-            path="/"
-            element={<Dashboard />}
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Upload */}
+          {/* ===============================================
+              UPLOAD
+              =============================================== */}
 
           <Route
             path="/upload"
-            element={<Upload />}
+            element={
+              <ProtectedRoute>
+                <Upload />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Transactions */}
+          {/* ===============================================
+              TRANSACTIONS
+              =============================================== */}
 
           <Route
             path="/transactions"
-            element={<Transactions />}
+            element={
+              <ProtectedRoute>
+                <Transactions />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Subscriptions */}
+          {/* ===============================================
+              SUBSCRIPTIONS
+              =============================================== */}
 
           <Route
             path="/subscriptions"
-            element={<Subscriptions />}
+            element={
+              <ProtectedRoute>
+                <Subscriptions />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Budgets */}
+          {/* ===============================================
+              BUDGETS
+              =============================================== */}
 
           <Route
             path="/budgets"
-            element={<Budgets />}
+            element={
+              <ProtectedRoute>
+                <Budgets />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Goals */}
+          {/* ===============================================
+              GOALS
+              =============================================== */}
 
           <Route
             path="/goals"
-            element={<Goals />}
+            element={
+              <ProtectedRoute>
+                <Goals />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Insights */}
-
-          <Route
-            path="/insights"
-            element={<Insights />}
-          />
-
-
-          {/* AI Assistant */}
+          {/* ===============================================
+              AI ASSISTANT
+              =============================================== */}
 
           <Route
             path="/ai-assistant"
-            element={<AIAssistant />}
+            element={
+              <ProtectedRoute>
+                <AIAssistant />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Obligations */}
+          {/* ===============================================
+              OBLIGATIONS
+              =============================================== */}
 
           <Route
             path="/obligations"
-            element={<Obligations />}
+            element={
+              <ProtectedRoute>
+                <Obligations />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Financial Insights */}
+          {/* ===============================================
+              FINANCIAL INSIGHTS
+              =============================================== */}
 
           <Route
             path="/financial-insights"
-            element={<FinancialInsights />}
+            element={
+              <ProtectedRoute>
+                <FinancialInsights />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Expense Comparison */}
+          {/* ===============================================
+              EXPENSE COMPARISON
+              =============================================== */}
 
           <Route
             path="/expense-comparison"
-            element={<ExpenseComparison />}
+            element={
+              <ProtectedRoute>
+                <ExpenseComparison />
+              </ProtectedRoute>
+            }
           />
 
 
-          {/* Settings */}
+          {/* ===============================================
+              MONTHLY SUMMARY
+              =============================================== */}
+
+          <Route
+            path="/monthly-summary"
+            element={
+              <ProtectedRoute>
+                <MonthlyFinancialSummary />
+              </ProtectedRoute>
+            }
+          />
+
+
+          {/* ===============================================
+              SETTINGS
+              =============================================== */}
 
           <Route
             path="/settings"
-            element={<Settings />}
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
           />
 
         </Routes>
@@ -321,11 +402,70 @@ function Layout() {
 }
 
 
+/* =========================================================
+   MAIN APP
+   ========================================================= */
+
 function App() {
+
   return (
     <BrowserRouter>
 
-      <Layout />
+      <Routes>
+
+        {/* =================================================
+            LOGIN
+            No Sidebar
+            ================================================= */}
+
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+
+        {/* =================================================
+            REGISTER
+            No Sidebar
+            ================================================= */}
+
+        <Route
+          path="/register"
+          element={<Register />}
+        />
+
+
+        {/* =================================================
+            APPLICATION
+            Sidebar + Protected Pages
+            ================================================= */}
+
+        <Route
+          path="/*"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            ROOT
+            Send user to Login
+            ================================================= */}
+
+        <Route
+          path="/"
+          element={
+            <Navigate
+              to="/login"
+              replace
+            />
+          }
+        />
+
+      </Routes>
 
     </BrowserRouter>
   );
